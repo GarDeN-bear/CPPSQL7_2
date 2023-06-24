@@ -1,17 +1,8 @@
-CREATE TABLE IF NOT EXISTS departments(
-id serial PRIMARY KEY,
-name varchar(50) UNIQUE NOT NULL
-);
 
-CREATE TABLE IF NOT EXISTS bosses(
-id int PRIMARY KEY REFERENCES departments(id),
-name varchar(50) UNIQUE NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS employees(
+CREATE TABLE IF NOT EXISTS employee(
 id serial PRIMARY KEY,
 name varchar(50) UNIQUE NOT NULL,
-fk_department int REFERENCES departments(id),
-fk_boss int REFERENCES bosses(id)
+department varchar(50) NOT NULL,
+boss_id int REFERENCES employee(id)
 );
 

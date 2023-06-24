@@ -26,10 +26,33 @@ albums_id INT REFERENCES albums(id),
 CONSTRAINT performers_albums_pk PRIMARY KEY (performers_id, albums_id)
 );
 
+CREATE TABLE IF NOT EXISTS collection(
+id SERIAL PRIMARY KEY,
+name varchar(50) NOT NULL, 
+date DATE NOT NULL
+);
 
 create table if not exists tracks 
 (id SERIAL primary KEY,
 name VARCHAR(60) NOT NULL,
 duration INT NOT NULL,
-fk_albums INT REFERENCES albums(id)
+fk_albums INT REFERENCES albums(id),
 );
+
+CREATE TABLE IF NOT EXISTS collection_tracks(
+collection_id INT REFERENCES collection(id),
+tracks_id INT REFERENCES tracks(id),
+CONSTRAINT collection_tracks_pk PRIMARY KEY (collection)
+
+);
+
+
+
+
+
+
+
+
+
+
+
